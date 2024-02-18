@@ -12,4 +12,4 @@ needs to allocate buffers when Minecrafts code tells it to, currently on the hea
 The goal of this project is to write mods that target Minecraft code specifically, patching out
 anything rendering related with [Mixin](https://github.com/SpongePowered/Mixin).
 
-:warning: This is work in progress.
+:warning: This is work in progress and I have yet to benchmark any effects.
