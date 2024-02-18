@@ -1,0 +1,20 @@
+modLoader="javafml"
+loaderVersion="[1,)"
+issueTrackerURL="https://github.com/3arthqu4ke/hmc-optimizations"
+license = "MPL-2.0"
+
+[[mods]]
+modId = "hmc_optimizations"
+version = "${version}"
+displayName = "HMC-Optimizations"
+authors = "3arthqu4ke"
+description = '''
+    Version specific optimizations for HeadlessMC
+'''
+
+[[dependencies.modid]]
+modId="minecraft"
+mandatory=true
+versionRange="[1.20.4]"
+ordering="NONE"
+side="BOTH"
