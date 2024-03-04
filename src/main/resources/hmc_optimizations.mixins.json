@@ -4,11 +4,14 @@
   "package": "me.earth.hmc_optimizations.mixin",
   "compatibilityLevel": "JAVA_8",
   "mixins": [
+    "MixinCommandContextImpl"
   ],
   "client": [
     "MixinGameRenderer",
     "MixinMinecraft",
     "MixinRenderTarget",
+    "MixinSoundBufferLibrary",
+    "MixinSoundEngine",
     "MixinSoundManager",
     "MixinWindow"
   ],
