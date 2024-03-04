@@ -12,4 +12,14 @@ needs to allocate buffers when Minecrafts code tells it to, currently on the hea
 The goal of this project is to write mods that target Minecraft code specifically, patching out
 anything rendering related with [Mixin](https://github.com/SpongePowered/Mixin).
 
+Console output from a fresh, headless SinglePlayer world, with and with HMC-Optimizations:
+```
+> fps
+1356 fps T: inffast fancy-clouds B: 2
+> optimize
+HMC-Optimizations enabled.
+> fps
+1826208 fps T: inffast fancy-clouds B: 2
+```
+
 :warning: This is work in progress.
