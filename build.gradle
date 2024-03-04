@@ -95,6 +95,8 @@ unimined.minecraft(sourceSets.lexforge) {
     minecraftRemapper.config {
         ignoreConflicts(true)
     }
+
+    defaultRemapJar = true
 }
 
 configurations {
@@ -106,9 +108,9 @@ configurations {
 }
 
 dependencies {
-    implementation "org.spongepowered:mixin:0.8.5-SNAPSHOT"
-    compileOnly "me.earth.headlessmc:headlessmc:1.8.1"
-    lwjglAgent "me.earth.headlessmc:headlessmc-lwjgl:1.8.1"
+    compileOnly 'org.spongepowered:mixin:0.8.5-SNAPSHOT'
+    compileOnly 'me.earth.headlessmc:headlessmc:1.8.1'
+    lwjglAgent 'me.earth.headlessmc:headlessmc-lwjgl:1.8.1'
 }
 
 afterEvaluate {
@@ -147,5 +149,29 @@ processLexforgeResources {
 
     filesMatching("META-INF/mods.toml") {
         expand "version": project.version
+    }
+}
+
+// Forge Runs seem to have problems running from the build/classes folder
+// So instead we just run from the built jar
+afterEvaluate {
+    lexforgeRunClient {
+        dependsOn(lexforgeJar)
+        classpath = classpath.filter {
+            !it.toString().contains('hmc-optimizations/build/classes/java/'.replace('/', File.separator))
+                    && !it.toString().contains('hmc-optimizations/build/resources/'.replace('/', File.separator))
+        }
+
+        classpath += files("${projectDir}/build/libs/hmc-optimizations-${version}-lexforge-dev.jar".replace('/', File.separator))
+    }
+
+    neoforgeRunClient {
+        dependsOn(neoforgeJar)
+        classpath = classpath.filter {
+            !it.toString().contains('hmc-optimizations/build/classes/java/'.replace('/', File.separator))
+                    && !it.toString().contains('hmc-optimizations/build/resources/'.replace('/', File.separator))
+        }
+
+        classpath += files("${projectDir}/build/libs/hmc-optimizations-${version}-neoforge-dev.jar".replace('/', File.separator))
     }
 }
