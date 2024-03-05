@@ -1,6 +1,6 @@
-modLoader="javafml"
-loaderVersion="[48,)"
-issueTrackerURL="https://github.com/3arthqu4ke/hmc-optimizations"
+modLoader = "javafml"
+loaderVersion = "[48,)"
+issueTrackerURL = "https://github.com/3arthqu4ke/hmc-optimizations"
 license = "MIT"
 
 [[mods]]
@@ -13,8 +13,8 @@ description = '''
 '''
 
 [[dependencies.hmc_optimizations]]
-modId="minecraft"
-mandatory=true
-versionRange="[1.20.4]"
-ordering="NONE"
-side="BOTH"
+modId = "minecraft"
+mandatory = true
+versionRange = "[1.20.4]"
+ordering = "NONE"
+side = "BOTH"
