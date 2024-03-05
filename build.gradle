@@ -70,7 +70,7 @@ unimined.minecraft(sourceSets.neoforge) {
 
     neoForged {
         loader project.neoforge_version
-        mixinConfig "hmc_optimizations.mixins.json"
+        mixinConfig 'hmc_optimizations.mixins.json'
     }
 
     minecraftRemapper.config {
@@ -89,7 +89,7 @@ unimined.minecraft(sourceSets.lexforge) {
 
     minecraftForge {
         loader project.lexforge_version
-        mixinConfig "hmc_optimizations.mixins.json"
+        mixinConfig 'hmc_optimizations.mixins.json'
     }
 
     minecraftRemapper.config {
@@ -175,3 +175,19 @@ afterEvaluate {
         classpath += files("${projectDir}/build/libs/hmc-optimizations-${version}-neoforge-dev.jar".replace('/', File.separator))
     }
 }
+
+tasks.withType(org.gradle.jvm.tasks.Jar).configureEach {
+    from("LICENSE") {
+        duplicatesStrategy = DuplicatesStrategy.INCLUDE
+        rename { "${it}_${project.archivesBaseName}" }
+    }
+
+    manifest {
+        attributes(
+            'Implementation-Title': 'HMC-Optimizations',
+            'MixinConfigs': "hmc_optimizations.mixins.json",
+            'Implementation-Version': project.version,
+        )
+    }
+}
+
