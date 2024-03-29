@@ -18,7 +18,10 @@ jobs:
             -   name: Build
                 run: ./gradlew build
             -   name: Release
-                uses: softprops/action-gh-release@v2
+                uses: "marvinpinto/action-automatic-releases@latest"
                 with:
+                  automatic_release_tag: "latest"
+                  prerelease: true
+                  title: "Development Build"
                   files: build/libs/*
     
