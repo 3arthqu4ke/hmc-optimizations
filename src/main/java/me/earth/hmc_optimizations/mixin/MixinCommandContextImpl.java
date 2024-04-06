@@ -12,7 +12,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Pseudo
-@Mixin(CommandContextImpl.class)
+@Mixin(value = CommandContextImpl.class, remap = false)
 public abstract class MixinCommandContextImpl {
     @Shadow protected abstract void add(Command command);
 
