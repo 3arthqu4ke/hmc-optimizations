@@ -10,7 +10,6 @@
     "MixinClientChunkCache",
     "MixinClientLevel",
     "MixinGameRenderer",
-    "MixinLevelRenderer",
     "MixinMinecraft",
     "MixinRenderTarget",
     "MixinScreen",
