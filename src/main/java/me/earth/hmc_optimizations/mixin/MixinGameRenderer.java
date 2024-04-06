@@ -1,6 +1,5 @@
 package me.earth.hmc_optimizations.mixin;
 
-import me.earth.hmc_optimizations.HMCOptimizations;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.GameRenderer;
 import org.spongepowered.asm.mixin.Final;
@@ -18,7 +17,7 @@ public class MixinGameRenderer {
     private void renderHook(float f, long l, boolean bl, CallbackInfo ci) {
         // finishing of a loading overlay is tied to rendering it, so in that case we need to render it.
         if (minecraft.getOverlay() == null && minecraft.screen == null) {
-            HMCOptimizations.optimize(ci);
+            ci.cancel();
         }
     }
 

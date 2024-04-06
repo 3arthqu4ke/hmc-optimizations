@@ -1,7 +1,6 @@
 package me.earth.hmc_optimizations.mixin;
 
 import com.mojang.logging.LogUtils;
-import me.earth.hmc_optimizations.HMCOptimizations;
 import net.minecraft.client.resources.sounds.Sound;
 import net.minecraft.client.sounds.SoundBufferLibrary;
 import net.minecraft.resources.ResourceLocation;
@@ -30,23 +29,17 @@ public class MixinSoundBufferLibrary {
 
     @Inject(method = "getCompleteBuffer", at = @At("HEAD"), cancellable = true)
     private void getCompleteBufferHook(ResourceLocation resourceLocation, CallbackInfoReturnable<CompletableFuture<?>> cir) {
-        if (HMCOptimizations.optimize) {
-            cir.setReturnValue(hmc_optimizations$Future);
-        }
+        cir.setReturnValue(hmc_optimizations$Future);
     }
 
     @Inject(method = "getStream", at = @At("HEAD"), cancellable = true)
     private void getStreamStreamHook(ResourceLocation resourceLocation, boolean looping, CallbackInfoReturnable<CompletableFuture<?>> cir) {
-        if (HMCOptimizations.optimize) {
-            cir.setReturnValue(hmc_optimizations$Future);
-        }
+        cir.setReturnValue(hmc_optimizations$Future);
     }
 
     @Inject(method = "preload", at = @At("HEAD"), cancellable = true)
     private void preloadHook(Collection<Sound> collection, CallbackInfoReturnable<CompletableFuture<?>> cir) {
-        if (HMCOptimizations.optimize) {
-            cir.setReturnValue(hmc_optimizations$Future);
-        }
+        cir.setReturnValue(hmc_optimizations$Future);
     }
 
 }

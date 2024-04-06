@@ -7,9 +7,13 @@
     "MixinCommandContextImpl"
   ],
   "client": [
+    "MixinClientChunkCache",
+    "MixinClientLevel",
     "MixinGameRenderer",
+    "MixinLevelRenderer",
     "MixinMinecraft",
     "MixinRenderTarget",
+    "MixinScreen",
     "MixinSoundBufferLibrary",
     "MixinSoundEngine",
     "MixinSoundManager",
