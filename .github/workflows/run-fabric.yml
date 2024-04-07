@@ -16,7 +16,7 @@ jobs:
       - name: Build
         run: ./gradlew build
       - name: Copy mod jar to mods
-        run: cp build/libs/hmc-optimizations-*-fabric.jar ./run/mods/
+        run: mkdir -p run/mods && cp build/libs/hmc-optimizations-*-fabric.jar run/mods
       - name: List mods
         run: ls run/mods
       - name: Run the MC client
