@@ -4,7 +4,7 @@
 
 <div align="center">
 
-[![CodeFactor](https://www.codefactor.io/repository/github/3arthqu4ke/hmc-optimizations/badge/main)](https://www.codefactor.io/repository/github/3arthqu4ke/hmc-optimizations/overview/main)
+[![CodeFactor](https://www.codefactor.io/repository/github/3arthqu4ke/hmc-optimizations/badge/1.20.4)](https://www.codefactor.io/repository/github/3arthqu4ke/hmc-optimizations/overview/1.20.4)
 [![GitHub All Releases](https://img.shields.io/github/downloads/3arthqu4ke/hmc-optimizations/total.svg)](https://github.com/3arthqu4ke/hmc-optimizations/releases)
 ![](https://github.com/3arthqu4ke/mc-optimizations/actions/workflows/build.yml/badge.svg)
 ![GitHub](https://img.shields.io/github/license/3arthqu4ke/hmc-optimizations)
