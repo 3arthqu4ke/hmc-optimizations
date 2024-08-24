@@ -1,6 +1,9 @@
 name: Run all versions with mc-runtime-test
 on:
   workflow_dispatch:
+  workflow_call:
+  push:
+  pull_request:
 
 jobs:
   run:

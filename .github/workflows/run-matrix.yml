@@ -1,6 +1,7 @@
 name: Run all versions with gradle task
 on:
   workflow_dispatch:
+  workflow_call:
 
 jobs:
   run:
