@@ -5,7 +5,7 @@ on:
       dir:
         description: 'The directory to build in'
         required: true
-        default: '1.21'
+        default: '1_21'
         type: string
       mc:
         description: 'The MC version to build'
