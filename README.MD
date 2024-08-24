@@ -1,3 +1,6 @@
+> [!WARNING]
+> This is an outdated branch, development is happening on the [main](https://github.com/3arthqu4ke/hmc-optimizations/tree/main) branch.
+
 <h1 align="center" style="font-weight: normal;"><b>HMC-Optimizations</b></h1>
 <p align="center">Version specific optimizations for the HeadlessMc runtime.</p>
 <p align="center"><a href="https://github.com/3arthqu4ke/mc-runtime-test">Mc-Runtime-Test</a> | <a href="https://github.com/3arthqu4ke/headlessmc">HMC</a> | <a href="https://github.com/3arthqu4ke/hmc-specifics">HMC-Specifics</a> | HMC-Optimizations</p>
