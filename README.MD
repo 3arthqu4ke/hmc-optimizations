@@ -1,3 +1,6 @@
+> [!WARNING]
+> This is an outdated branch, development is happening on the [main](https://github.com/3arthqu4ke/hmc-optimizations/tree/main) branch.
+
 # HMC-Optimizations
 Version specific optimizations for [HeadlessMC](https://github.com/3arthqu4ke/headlessmc).
 The goal of HeadlessMC is to make the Minecraft client run on the command line. It does so by
