@@ -1,0 +1,33 @@
+name: Run all versions with gradle task
+on:
+  workflow_dispatch:
+
+jobs:
+  run:
+    strategy:
+      matrix:
+        version:
+          - { dir: 1.21, mc: 1.21.1, java: 21, lex: 52.0.2, neo: 4, task: neoforgeRunWithHeadlessMc }
+          - { dir: 1.21, mc: 1.21.1, java: 21, lex: 52.0.2, neo: 4, task: forgeRunWithHeadlessMc }
+          - { dir: 1.21, mc: 1.21.1, java: 21, lex: 52.0.2, neo: 4, task: fabricRunWithHeadlessMc }
+          - { dir: 1.21, mc: 1.21, java: 21, lex: 51.0.24, neo: 96-beta, task: neoforgeRunWithHeadlessMc }
+          - { dir: 1.21, mc: 1.21, java: 21, lex: 51.0.24, neo: 96-beta, task: forgeRunWithHeadlessMc }
+          - { dir: 1.21, mc: 1.21, java: 21, lex: 51.0.24, neo: 96-beta, task: fabricRunWithHeadlessMc }
+    runs-on: ubuntu-latest
+    if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name != github.event.pull_request.base.repo.full_name
+    steps:
+      - name: Checkout sources
+        uses: actions/checkout@v4
+      - name: Setup Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: ${{ matrix.version.java }}
+      - name: Setup Gradle
+        uses: gradle/gradle-build-action@v3
+      - name: Grant execute permission for gradlew
+        working-directory: ./${{ matrix.version.dir }}
+        run: chmod +x gradlew
+      - name: Run with Gradle
+        working-directory: ./${{ matrix.version.dir }}
+        run: ./gradlew ${{ matrix.version.task }} -Pminecraft_version=${{ matrix.version.mc }} -Plexforge_version=${{ matrix.version.lex }} -Pneoforge_version=${{ matrix.version.neo }} --stacktrace
