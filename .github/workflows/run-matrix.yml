@@ -13,6 +13,9 @@ jobs:
           - { dir: 1.21, mc: 1.21, java: 21, lex: 51.0.24, neo: 96-beta, task: neoforgeRunWithHeadlessMc }
           - { dir: 1.21, mc: 1.21, java: 21, lex: 51.0.24, neo: 96-beta, task: forgeRunWithHeadlessMc }
           - { dir: 1.21, mc: 1.21, java: 21, lex: 51.0.24, neo: 96-beta, task: fabricRunWithHeadlessMc }
+          - { dir: 1.20, mc: 1.20.6, java: 21, lex: 50.1.10, neo: 119, task: neoforgeRunWithHeadlessMc }
+          - { dir: 1.20, mc: 1.20.6, java: 21, lex: 50.1.10, neo: 119, task: forgeRunWithHeadlessMc }
+          - { dir: 1.20, mc: 1.20.6, java: 21, lex: 50.1.10, neo: 119, task: fabricRunWithHeadlessMc }
     runs-on: ubuntu-latest
     if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name != github.event.pull_request.base.repo.full_name
     steps:
