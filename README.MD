@@ -12,6 +12,14 @@
 
 </div>
 
+> [!WARNING]
+> This is work in progress. 
+> We can confirm that it launches with Minecraft.
+> But we are missing data from running this long term, 
+> it is possible that there memory leaks.
+> Also mods that have mixins in rendering functions and NEED
+> them to be called will not work, because we skip that code.
+
 Version specific optimizations for [HeadlessMC](https://github.com/3arthqu4ke/headlessmc).
 The goal of HeadlessMC is to make the Minecraft client run on the command line. It does so by
 hooking into the LWJGL library skipping all the code. This also makes it largely
@@ -26,6 +34,7 @@ The goal of this project is to write mods that target Minecraft code specificall
 anything rendering related with [Mixin](https://github.com/SpongePowered/Mixin).
 
 Console output from a fresh, headless SinglePlayer world, without and with HMC-Optimizations:
+
 ```
 > fps
 1356 fps T: inffast fancy-clouds B: 2
@@ -34,5 +43,3 @@ HMC-Optimizations enabled.
 > fps
 1826208 fps T: inffast fancy-clouds B: 2
 ```
-
-:warning: This is work in progress.

@@ -17,7 +17,7 @@ buildscript {
 
 plugins {
     id 'java'
-    id 'xyz.wagyourtail.unimined' version '1.3.4'
+    id 'xyz.wagyourtail.unimined' version '1.3.9'
     id 'io.github.headlesshq.headlessmc-gradle-plugin' version '0.1.0'
 }
 
@@ -211,6 +211,7 @@ tasks.withType(org.gradle.jvm.tasks.Jar).configureEach {
 
 for (Modlauncher ml : Modlauncher.values()) {
     tasks.register("${ml.officialName}RunWithHeadlessMc", HeadlessMcRunTask) {
+        group 'headlessmc'
         from(tasks.named("remap${ml.hmcName.capitalize()}Jar"))
         into(modsDirectory)
 
