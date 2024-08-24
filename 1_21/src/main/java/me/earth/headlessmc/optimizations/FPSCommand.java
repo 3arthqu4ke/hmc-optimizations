@@ -1,7 +1,7 @@
 package me.earth.headlessmc.optimizations;
 
 import me.earth.headlessmc.api.HeadlessMc;
-import me.earth.headlessmc.command.AbstractCommand;
+import me.earth.headlessmc.api.command.AbstractCommand;
 import net.minecraft.client.Minecraft;
 
 public class FPSCommand extends AbstractCommand {
@@ -10,7 +10,7 @@ public class FPSCommand extends AbstractCommand {
     }
 
     @Override
-    public void execute(String... strings) {
+    public void execute(String s, String... strings) {
         ctx.log(Minecraft.getInstance().fpsString);
     }
 
