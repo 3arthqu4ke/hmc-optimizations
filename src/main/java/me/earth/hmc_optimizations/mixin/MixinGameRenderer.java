@@ -1,5 +1,6 @@
 package me.earth.hmc_optimizations.mixin;
 
+import net.minecraft.client.DeltaTracker;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.GameRenderer;
 import org.spongepowered.asm.mixin.Final;
@@ -14,7 +15,7 @@ public class MixinGameRenderer {
     @Shadow @Final Minecraft minecraft;
 
     @Inject(method = "render", at = @At("HEAD"), cancellable = true)
-    private void renderHook(float f, long l, boolean bl, CallbackInfo ci) {
+    private void renderHook(DeltaTracker deltaTracker, boolean bl, CallbackInfo ci) {
         // finishing of a loading overlay is tied to rendering it, so in that case we need to render it.
         if (minecraft.getOverlay() == null && minecraft.screen == null) {
             ci.cancel();

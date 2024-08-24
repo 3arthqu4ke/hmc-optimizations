@@ -15,6 +15,6 @@ description = '''
 [[dependencies.hmc_optimizations]]
 modId = "minecraft"
 mandatory = true
-versionRange = "[1.20.4]"
+versionRange = "[1.21.1]"
 ordering = "NONE"
 side = "BOTH"
