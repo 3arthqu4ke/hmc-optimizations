@@ -91,7 +91,7 @@ unimined.minecraft {
         off = true
     }
 
-    defaultRemapJar = true
+    defaultRemapJar = false
 }
 
 unimined.minecraft(sourceSets.fabric) {
