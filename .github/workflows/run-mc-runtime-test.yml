@@ -46,6 +46,8 @@ jobs:
         run: ls ${{ matrix.version.dir }}/build/libs
       - name: Delete dev jar
         run: rm ${{ matrix.version.dir }}/build/libs/*-dev.jar
+      - name: Delete remapped jar
+        run: rm ${{ matrix.version.dir }}/build/libs/*-remapped.jar
       - name: Copy mod jar
         run: cp ${{ matrix.version.dir }}/build/libs/hmc-optimizations-*${{ matrix.version.type }}*.jar run/mods
       - name: List mod dir
