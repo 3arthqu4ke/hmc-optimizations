@@ -16,7 +16,7 @@
 > This is work in progress. 
 > We can confirm that it launches with Minecraft.
 > But we are missing data from running this long term, 
-> it is possible that there memory leaks.
+> it is possible that there are memory leaks.
 > Also mods that have mixins in rendering functions and NEED
 > them to be called will not work, because we skip that code.
 
