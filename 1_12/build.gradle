@@ -138,7 +138,7 @@ dependencies {
     lwjglAgent 'me.earth.headlessmc:headlessmc-lwjgl:2.1.0'
     jarLibs 'com.github.ImpactDevelopment:SimpleTweaker:1.2'
     // TODO: package 0.8.5 instead?
-    jarLibs('org.spongepowered:mixin:0.7.11-SNAPSHOT') {
+    jarLibs('org.spongepowered:mixin:0.8.5-SNAPSHOT') {
         exclude module: 'launchwrapper'
         exclude module: 'guava'
         exclude module: 'gson'
@@ -236,7 +236,7 @@ for (Modlauncher mLauncher : Modlauncher.values()) {
 
         tasks.register("${ml.officialName}RunWithHeadlessMc", HeadlessMcRunTask) {
             group 'headlessmc'
-            from(tasks.named("remap${ml.hmcName.capitalize()}Jar"))
+            from(tasks.named("${platform}ShadowJar"))
             into(modsDirectory)
 
             version = "${minecraft_version}"
