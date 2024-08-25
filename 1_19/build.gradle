@@ -12,6 +12,7 @@ buildscript {
     dependencies {
         classpath "me.earth.headlessmc:headlessmc-launcher:2.1.0"
         classpath "io.github.headlesshq:headlessmc-gradle-plugin:0.2.0"
+        // classpath "org.semver4j:semver4j:5.3.0" ??? had bugs with this
     }
 }
 
@@ -29,13 +30,12 @@ base {
 }
 
 java {
-    sourceCompatibility = JavaVersion.VERSION_21
-    targetCompatibility = JavaVersion.VERSION_21
+    sourceCompatibility = JavaVersion.VERSION_17
+    targetCompatibility = JavaVersion.VERSION_17
 }
 
 sourceSets {
     fabric
-    neoforge
     lexforge
 }
 
@@ -83,25 +83,6 @@ unimined.minecraft(sourceSets.fabric) {
 
     fabric {
         loader project.fabric_version
-    }
-
-    defaultRemapJar = true
-}
-
-unimined.minecraft(sourceSets.neoforge) {
-    combineWith(sourceSets.main)
-
-    neoForge {
-        loader project.neoforge_version
-        mixinConfig 'hmcoptimizations.mixins.json'
-    }
-
-    minecraftRemapper.config {
-        // neoforge adds 1 conflict, where 2 interfaces have a method with the same name on yarn/mojmap,
-        // but the method has different names in the intermediary mappings.
-        // this is a conflict because they have a class that extends both interfaces.
-        // this shouldn't be a problem as long as named mappings don't make the name of those 2 methods different.
-        ignoreConflicts(true)
     }
 
     defaultRemapJar = true
@@ -159,14 +140,6 @@ processFabricResources {
     }
 }
 
-processNeoforgeResources {
-    inputs.property "version", project.version
-
-    filesMatching("META-INF/neoforge.mods.toml") {
-        expand "version": project.version
-    }
-}
-
 processLexforgeResources {
     inputs.property "version", project.version
 
@@ -187,16 +160,6 @@ afterEvaluate {
 
         classpath += files("${projectDir}/build/libs/hmc-optimizations-${version}-lexforge-dev.jar".replace('/', File.separator))
     }
-
-    neoforgeRunClient {
-        dependsOn(neoforgeJar)
-        classpath = classpath.filter {
-            !it.toString().contains('hmc-optimizations/build/classes/java/'.replace('/', File.separator))
-                    && !it.toString().contains('hmc-optimizations/build/resources/'.replace('/', File.separator))
-        }
-
-        classpath += files("${projectDir}/build/libs/hmc-optimizations-${version}-neoforge-dev.jar".replace('/', File.separator))
-    }
 }
 
 tasks.withType(org.gradle.jvm.tasks.Jar).configureEach {
@@ -215,16 +178,18 @@ tasks.withType(org.gradle.jvm.tasks.Jar).configureEach {
 }
 
 for (Modlauncher mLauncher : Modlauncher.values()) {
-    def ml = mLauncher // groovy weirdness, need to do this
-    tasks.register("${ml.officialName}RunWithHeadlessMc", HeadlessMcRunTask) {
-        group 'headlessmc'
-        from(tasks.named("remap${ml.hmcName.capitalize()}Jar"))
-        into(modsDirectory)
+    def ml = mLauncher
+    if (ml != Modlauncher.NEOFORGE) {
+        tasks.register("${ml.officialName}RunWithHeadlessMc", HeadlessMcRunTask) {
+            group 'headlessmc'
+            from(tasks.named("remap${ml.hmcName.capitalize()}Jar"))
+            into(modsDirectory)
 
-        version = "${minecraft_version}"
-        modlauncher = ml
-        lwjgl = rootProject.property('hmc.lwjgl').toBoolean()
-        mcRuntimeTest = rootProject.property('mc.runtime.test').toBoolean()
-        // specifics = true
+            version = "${minecraft_version}"
+            modlauncher = ml
+            lwjgl = rootProject.property('hmc.lwjgl').toBoolean()
+            mcRuntimeTest = rootProject.property('mc.runtime.test').toBoolean()
+            // specifics = true
+        }
     }
 }

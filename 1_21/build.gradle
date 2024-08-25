@@ -28,6 +28,11 @@ base {
     archivesName = "hmc-optimizations-${minecraft_version}"
 }
 
+java {
+    sourceCompatibility = JavaVersion.VERSION_21
+    targetCompatibility = JavaVersion.VERSION_21
+}
+
 sourceSets {
     fabric
     neoforge
@@ -209,7 +214,8 @@ tasks.withType(org.gradle.jvm.tasks.Jar).configureEach {
     }
 }
 
-for (Modlauncher ml : Modlauncher.values()) {
+for (Modlauncher mLauncher : Modlauncher.values()) {
+    def ml = mLauncher // groovy weirdness, need to do this
     tasks.register("${ml.officialName}RunWithHeadlessMc", HeadlessMcRunTask) {
         group 'headlessmc'
         from(tasks.named("remap${ml.hmcName.capitalize()}Jar"))
