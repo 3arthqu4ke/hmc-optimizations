@@ -87,7 +87,7 @@ unimined.minecraft {
 unimined.minecraft(sourceSets.fabric) {
     combineWith(sourceSets.main)
 
-    fabric {
+    legacyFabric {
         loader project.fabric_version
     }
 
