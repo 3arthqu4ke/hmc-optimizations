@@ -33,7 +33,7 @@ jobs:
             - name: Delete dev jar
               run: rm ./${{ matrix.version.dir }}/build/libs/*-dev.jar
             - name: Delete remapped jar
-              run: rm ./${{ matrix.version.dir }}/build/libs/*-remapped.jar
+              run: rm -f ./${{ matrix.version.dir }}/build/libs/*-remapped.jar
             - name: Upload ${{ matrix.version.mc }} Jars
               uses: actions/upload-artifact@v4
               with:
