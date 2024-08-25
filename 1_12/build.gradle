@@ -176,6 +176,10 @@ processLexforgeResources {
     filesMatching("META-INF/mods.toml") {
         expand "version": project.version
     }
+
+    filesMatching("mcmod.info") {
+        expand "version": project.version
+    }
 }
 
 // Forge Runs seem to have problems running from the build/classes folder

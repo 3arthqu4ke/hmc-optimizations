@@ -77,7 +77,7 @@ unimined.minecraft {
 
     runs {
         // https://github.com/unimined/unimined/issues/98
-        off = true
+        //off = true
     }
 
     defaultRemapJar = false
