@@ -32,6 +32,9 @@ needs to allocate buffers when Minecrafts code tells it to, currently on the hea
 
 The goal of this project is to write mods that target Minecraft code specifically, patching out
 anything rendering related with [Mixin](https://github.com/SpongePowered/Mixin).
+If you really want to bring your memory footprint down,
+we also recommend that you configure HeadlessMc to use
+dummy assets via the `hmc.assets.dummy` property.
 
 Console output from a fresh, headless SinglePlayer world, without and with HMC-Optimizations:
 
