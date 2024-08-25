@@ -206,6 +206,7 @@ for (Modlauncher mLauncher : Modlauncher.values()) {
             version = "${minecraft_version}"
             modlauncher = ml
             lwjgl = rootProject.property('hmc.lwjgl').toBoolean()
+            dummyAssets = rootProject.property('hmc.dummy.assets').toBoolean()
             mcRuntimeTest = rootProject.property('mc.runtime.test').toBoolean()
             // specifics = true
         }
