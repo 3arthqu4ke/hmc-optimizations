@@ -39,6 +39,17 @@ sourceSets {
     lexforge
 }
 
+sourceSets {
+    fabric {
+        compileClasspath += sourceSets.main.output + sourceSets.main.compileClasspath
+        runtimeClasspath += sourceSets.main.output + sourceSets.main.compileClasspath
+    }
+    lexforge {
+        compileClasspath += sourceSets.main.output + sourceSets.main.compileClasspath
+        runtimeClasspath += sourceSets.main.output + sourceSets.main.compileClasspath
+    }
+}
+
 repositories {
     mavenCentral()
     maven {
@@ -80,7 +91,7 @@ unimined.minecraft {
         off = true
     }
 
-    defaultRemapJar = false
+    defaultRemapJar = true
 }
 
 unimined.minecraft(sourceSets.fabric) {
