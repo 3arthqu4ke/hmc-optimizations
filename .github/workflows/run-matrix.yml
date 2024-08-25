@@ -42,10 +42,10 @@ jobs:
       - name: Build with Gradle
         working-directory: ./${{ matrix.version.dir }}
         run: ./gradlew build -Pminecraft_version=${{ matrix.version.mc }} -Plexforge_version=${{ matrix.version.lex }} -Pneoforge_version=${{ matrix.version.neo }} --stacktrace
-      - name: Upload ${{ matrix.version.mc }} Jars
+      - name: Upload ${{ matrix.version.mc }}-${{ matrix.version.task }} Jars
         uses: actions/upload-artifact@v4
         with:
-          name: jars-${{ matrix.version.mc }}
+          name: jars-${{ matrix.version.mc }}-${{ matrix.version.task }}
           path: ./${{ matrix.version.dir }}/build/libs/*.jar
       - name: Run with Gradle
         working-directory: ./${{ matrix.version.dir }}
