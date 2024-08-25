@@ -1,6 +1,5 @@
 {
   "required": true,
-  "minVersion": "0.8",
   "package": "me.earth.headlessmc.optimizations.mixin",
   "compatibilityLevel": "JAVA_8",
   "mixins": [
