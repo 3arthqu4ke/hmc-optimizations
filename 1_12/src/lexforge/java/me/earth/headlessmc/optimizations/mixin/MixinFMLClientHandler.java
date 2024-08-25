@@ -1,8 +1,6 @@
 package me.earth.headlessmc.optimizations.mixin;
 
 import me.earth.headlessmc.optimizations.hook.Hooks;
-import net.minecraftforge.fml.client.FMLClientHandler;
-import net.minecraftforge.fml.client.SplashProgress;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Pseudo;
 import org.spongepowered.asm.mixin.injection.At;
@@ -11,9 +9,11 @@ import org.spongepowered.asm.mixin.injection.Redirect;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
+import java.lang.reflect.Method;
+
 @SuppressWarnings("UnusedMixin")
 @Pseudo
-@Mixin(value = FMLClientHandler.class, remap = false)
+@Mixin(targets = "net/minecraftforge/fml/client/FMLClientHandler", remap = false)
 public abstract class MixinFMLClientHandler {
     @Redirect(
         method = "beginMinecraftLoading",
@@ -22,7 +22,15 @@ public abstract class MixinFMLClientHandler {
             target = "Lnet/minecraftforge/fml/client/SplashProgress;start()V")
     )
     private void beginMinecraftLoadingHook() {
-        Hooks.RUN_HOOK.invoke(SplashProgress::start);
+        Hooks.RUN_HOOK.invoke(() -> {
+            try {
+                Class<?> splashProgress = Class.forName("net.minecraftforge.fml.client.SplashProgress");
+                Method start = splashProgress.getMethod("start");
+                start.invoke(null);
+            } catch (ReflectiveOperationException e) {
+                throw new RuntimeException(e);
+            }
+        });
     }
 
     @Inject(
