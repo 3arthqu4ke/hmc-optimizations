@@ -173,6 +173,8 @@ tasks.withType(org.gradle.jvm.tasks.Jar).configureEach {
         rename { "${it}_${project.archivesBaseName}" }
     }
 
+    exclude "**net/minecraftforge/**/Mod.class"
+
     manifest {
         attributes(
             'Implementation-Title': 'HMC-Optimizations',
