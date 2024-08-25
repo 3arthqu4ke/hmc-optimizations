@@ -26,6 +26,9 @@ if __name__ == '__main__':
         used_input = False
     if used_input or (len(argv) > 2 and argv[2] == '-f') or input(f"Set version to {version} (y/n)?{linesep}") == 'y':
         base = path.abspath(path.join(path.dirname(__file__), '..'))
+        update(path.join(base, '1_12', 'build.gradle'), r"(version ').*(')", version)
+        update(path.join(base, '1_16', 'build.gradle'), r"(version ').*(')", version)
+        update(path.join(base, '1_19', 'build.gradle'), r"(version ').*(')", version)
         update(path.join(base, '1_20', 'build.gradle'), r"(version ').*(')", version)
         update(path.join(base, '1_21', 'build.gradle'), r"(version ').*(')", version)
     else:
