@@ -11,14 +11,14 @@ buildscript {
 
     dependencies {
         classpath "me.earth.headlessmc:headlessmc-launcher:2.1.0"
-        classpath "io.github.headlesshq:headlessmc-gradle-plugin:0.2.0"
+        classpath "io.github.headlesshq:headlessmc-gradle-plugin:0.3.0"
     }
 }
 
 plugins {
     id 'java'
     id 'xyz.wagyourtail.unimined' version '1.3.9'
-    id 'io.github.headlesshq.headlessmc-gradle-plugin' version '0.2.0'
+    id 'io.github.headlesshq.headlessmc-gradle-plugin' version '0.3.0'
 }
 
 group 'me.earth.headlessmc'
