@@ -75,6 +75,11 @@ unimined.minecraft {
         }*/
     }
 
+    runs {
+        // https://github.com/unimined/unimined/issues/98
+        off = true
+    }
+
     defaultRemapJar = false
 }
 
@@ -117,7 +122,7 @@ dependencies {
     lwjglAgent 'me.earth.headlessmc:headlessmc-lwjgl:2.1.0'
 }
 
-afterEvaluate {
+/* runs.off = true afterEvaluate {
     fabricRunClient {
         standardInput = System.in
         if (rootProject.property('hmc.lwjgl').toBoolean()) {
@@ -126,7 +131,7 @@ afterEvaluate {
             systemProperties['fabric.systemLibraries'] = "${configurations.lwjglAgent.files.iterator().next()}"
         }
     }
-}
+}*/
 
 jar {
     enabled = false
@@ -150,7 +155,7 @@ processLexforgeResources {
 
 // Forge Runs seem to have problems running from the build/classes folder
 // So instead we just run from the built jar
-afterEvaluate {
+/* runs.off = true afterEvaluate {
     lexforgeRunClient {
         dependsOn(lexforgeJar)
         classpath = classpath.filter {
@@ -160,7 +165,7 @@ afterEvaluate {
 
         classpath += files("${projectDir}/build/libs/hmc-optimizations-${version}-lexforge-dev.jar".replace('/', File.separator))
     }
-}
+}*/
 
 tasks.withType(org.gradle.jvm.tasks.Jar).configureEach {
     from("LICENSE") {
