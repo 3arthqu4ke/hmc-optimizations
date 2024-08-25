@@ -39,6 +39,9 @@ jobs:
       - name: Grant execute permission for gradlew
         working-directory: ./${{ matrix.version.dir }}
         run: chmod +x gradlew
+      - name: Build with Gradle
+        working-directory: ./${{ matrix.version.dir }}
+        run: ./gradlew build -Pminecraft_version=${{ matrix.version.mc }} -Plexforge_version=${{ matrix.version.lex }} -Pneoforge_version=${{ matrix.version.neo }} --stacktrace
       - name: Run with Gradle
         working-directory: ./${{ matrix.version.dir }}
         run: ./gradlew ${{ matrix.version.task }} -Pminecraft_version=${{ matrix.version.mc }} -Plexforge_version=${{ matrix.version.lex }} -Pneoforge_version=${{ matrix.version.neo }} --stacktrace
