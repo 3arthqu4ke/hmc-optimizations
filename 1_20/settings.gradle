@@ -20,6 +20,7 @@ pluginManagement {
             name = "3arthMaven"
             url = "https://3arthqu4ke.github.io/maven"
         }
+        maven { url 'https://jitpack.io' }
         gradlePluginPortal() {
             content {
                 excludeGroup("org.apache.logging.log4j")
