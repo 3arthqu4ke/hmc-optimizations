@@ -1,4 +1,4 @@
-name: Run all versions with gradle task
+name: Run with gradle
 on:
   workflow_dispatch:
   workflow_call:
