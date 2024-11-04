@@ -10,6 +10,9 @@ jobs:
     strategy:
       matrix:
         version:
+          - { dir: 1_21, mc: 1.21.3, java: 21, lex: 53.0.7, neo: 11-beta, task: neoforgeRunWithHeadlessMc }
+          - { dir: 1_21, mc: 1.21.3, java: 21, lex: 53.0.7, neo: 11-beta, task: forgeRunWithHeadlessMc }
+          - { dir: 1_21, mc: 1.21.3, java: 21, lex: 53.0.7, neo: 11-beta, task: fabricRunWithHeadlessMc }
           - { dir: 1_21, mc: 1.21.1, java: 21, lex: 52.0.2, neo: 4, task: neoforgeRunWithHeadlessMc }
           - { dir: 1_21, mc: 1.21.1, java: 21, lex: 52.0.2, neo: 4, task: forgeRunWithHeadlessMc }
           - { dir: 1_21, mc: 1.21.1, java: 21, lex: 52.0.2, neo: 4, task: fabricRunWithHeadlessMc }
