@@ -2,29 +2,34 @@ name: Run all versions with mc-runtime-test
 on:
   workflow_dispatch:
   workflow_call:
+  push:
+  pull_request:
 
 jobs:
   run:
     strategy:
       matrix:
         version:
-          - { dir: 1_21, mc: 1.21.3, type: lexforge, modloader: forge, regex: .*forge.*, java: 21 }
-          - { dir: 1_21, mc: 1.21.3, type: neoforge, modloader: neoforge, regex: .*neoforge.*, java: 21 }
-          - { dir: 1_21, mc: 1.21.3, type: fabric, modloader: fabric, regex: .*fabric.*, java: 21 }
-          - { dir: 1_21, mc: 1.21.1, type: lexforge, modloader: forge, regex: .*forge.*, java: 21 }
-          - { dir: 1_21, mc: 1.21.1, type: neoforge, modloader: neoforge, regex: .*neoforge.*, java: 21 }
-          - { dir: 1_21, mc: 1.21.1, type: fabric, modloader: fabric, regex: .*fabric.*, java: 21 }
-          #- { dir: 1_21, mc: 1.21, type: lexforge, modloader: lexforge, regex: .*forge.*, java: 21 }
-          #- { dir: 1_21, mc: 1.21, type: neoforge, modloader: neoforge, regex: .*neoforge.*, java: 21 }
-          #- { dir: 1_21, mc: 1.21, type: fabric, modloader: fabric, regex: .*fabric.*, java: 21 }
-          - { dir: 1_20, mc: 1.20.6, type: lexforge, modloader: lexforge, regex: .*forge.*, java: 21 }
-          - { dir: 1_20, mc: 1.20.6, type: neoforge, modloader: neoforge, regex: .*neoforge.*, java: 21 }
-          - { dir: 1_20, mc: 1.20.6, type: fabric, modloader: fabric, regex: .*fabric.*, java: 21 }
-          - { dir: 1_19, mc: 1.19.4, type: lexforge, modloader: lexforge, regex: .*forge.*, java: 17 }
-          - { dir: 1_19, mc: 1.19.4, type: fabric, modloader: fabric, regex: .*fabric.*, java: 17 }
-          - { dir: 1_16, mc: 1.16.5, type: lexforge, modloader: lexforge, regex: .*forge.*, java: 8 }
-          - { dir: 1_16, mc: 1.16.5, type: fabric, modloader: fabric, regex: .*fabric.*, java: 8 }
-          - { dir: 1_12, mc: 1.12.2, type: lexforge, modloader: lexforge, regex: .*forge.*, java: 8 }
+          - { dir: 1_21, mc: 1.21.4, java: 21, lex: 54.0.17, neo: 70-beta, type: neoforge, modloader: neoforge, regex: .*neoforge.* }
+          - { dir: 1_21, mc: 1.21.4, java: 21, lex: 54.0.17, neo: 70-beta, type: lexforge, modloader: forge, regex: .*forge.* }
+          - { dir: 1_21, mc: 1.21.4, java: 21, lex: 54.0.17, neo: 70-beta, type: fabric, modloader: fabric, regex: .*fabric.* }
+          - { dir: 1_21, mc: 1.21.3, java: 21, lex: 53.0.7, neo: 11-beta, type: neoforge, modloader: neoforge, regex: .*neoforge.* }
+          - { dir: 1_21, mc: 1.21.3, java: 21, lex: 53.0.7, neo: 11-beta, type: lexforge, modloader: forge, regex: .*forge.* }
+          - { dir: 1_21, mc: 1.21.3, java: 21, lex: 53.0.7, neo: 11-beta, type: fabric, modloader: fabric, regex: .*fabric.* }
+          - { dir: 1_21, mc: 1.21.1, java: 21, lex: 52.0.2, neo: 4, type: neoforge, modloader: neoforge, regex: .*neoforge.* }
+          - { dir: 1_21, mc: 1.21.1, java: 21, lex: 52.0.2, neo: 4, type: lexforge, modloader: forge, regex: .*forge.* }
+          - { dir: 1_21, mc: 1.21.1, java: 21, lex: 52.0.2, neo: 4, type: fabric, modloader: fabric, regex: .*fabric.* }
+          #- { dir: 1_21, mc: 1.21, java: 21, lex: 51.0.24, neo: 96-beta, type: neoforge, modloader: neoforge, regex: .*neoforge.* }
+          #- { dir: 1_21, mc: 1.21, java: 21, lex: 51.0.24, neo: 96-beta, type: lexforge, modloader: forge, regex: .*forge.* }
+          #- { dir: 1_21, mc: 1.21, java: 21, lex: 51.0.24, neo: 96-beta, fabric, modloader: fabric, regex: .*fabric.* }
+          - { dir: 1_20, mc: 1.20.6, java: 21, lex: 50.1.10, neo: 119, type: neoforge, modloader: neoforge, regex: .*neoforge.* }
+          - { dir: 1_20, mc: 1.20.6, java: 21, lex: 50.1.10, neo: 119, type: lexforge, modloader: forge, regex: .*forge.* }
+          - { dir: 1_20, mc: 1.20.6, java: 21, lex: 50.1.10, neo: 119, type: fabric, modloader: fabric, regex: .*fabric.* }
+          - { dir: 1_19, mc: 1.19.4, java: 17, lex: 45.2.9, neo: 0, type: lexforge, modloader: forge, regex: .*forge.* }
+          - { dir: 1_19, mc: 1.19.4, java: 17, lex: 45.2.9, neo: 0, type: fabric, modloader: fabric, regex: .*fabric.* }
+          - { dir: 1_16, mc: 1.16.5, java: 8, lex: 36.2.42, neo: 0, type: lexforge, modloader: forge, regex: .*forge.* }
+          - { dir: 1_16, mc: 1.16.5, java: 8, lex: 36.2.42, neo: 0, type: fabric, modloader: fabric, regex: .*fabric.* }
+          - { dir: 1_12, mc: 1.12.2, java: 8, lex: 14.23.5.2860, neo: 0, type: lexforge, modloader: forge, regex: .*forge.* }
     runs-on: ubuntu-latest
     if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name != github.event.pull_request.base.repo.full_name
     steps:
@@ -42,21 +47,21 @@ jobs:
         run: chmod +x gradlew
       - name: Build with Gradle
         working-directory: ./${{ matrix.version.dir }}
-        run: ./gradlew build --stacktrace
+        run: ./gradlew build -Pminecraft_version=${{ matrix.version.mc }} -Plexforge_version=${{ matrix.version.lex }} -Pneoforge_version=${{ matrix.version.neo }} --stacktrace
       - name: Create mods dir
         run: mkdir -p run/mods
       - name: List mod files
         run: ls ${{ matrix.version.dir }}/build/libs
       - name: Delete dev jar
         run: rm ${{ matrix.version.dir }}/build/libs/*-dev.jar
-      - name: Delete remapped jar
-        run: rm ${{ matrix.version.dir }}/build/libs/*-remapped.jar
+      #- name: Delete remapped jar
+      #  run: rm ${{ matrix.version.dir }}/build/libs/*-remapped.jar
       - name: Copy mod jar
         run: cp ${{ matrix.version.dir }}/build/libs/hmc-optimizations-*${{ matrix.version.type }}*.jar run/mods
       - name: List mod dir
         run: ls run/mods
       - name: Run the MC client
-        uses: 3arthqu4ke/mc-runtime-test@2.4.0
+        uses: 3arthqu4ke/mc-runtime-test@3.0.0
         with:
           mc: ${{ matrix.version.mc }}
           modloader: ${{ matrix.version.modloader }}
